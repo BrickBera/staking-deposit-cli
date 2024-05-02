@@ -16,6 +16,7 @@ PRATER = 'prater'
 SEPOLIA = 'sepolia'
 ZHEJIANG = 'zhejiang'
 HOLESKY = 'holesky'
+BERACHAIN = 'berachain'
 
 # Mainnet setting
 MainnetSetting = BaseChainSetting(
@@ -37,6 +38,10 @@ ZhejiangSetting = BaseChainSetting(
 HoleskySetting = BaseChainSetting(
     NETWORK_NAME=HOLESKY, GENESIS_FORK_VERSION=bytes.fromhex('01017000'),
     GENESIS_VALIDATORS_ROOT=bytes.fromhex('9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1'))
+# Berachain setting
+BerachainSetting = BaseChainSetting(
+    NETWORK_NAME=HOLESKY, GENESIS_FORK_VERSION=bytes.fromhex('04000000'),
+    GENESIS_VALIDATORS_ROOT=bytes.fromhex('96398c0c113c810e54bbc23e91d705a1b4b2ef37ad8def619c8e23c2432a8386'))
 
 
 ALL_CHAINS: Dict[str, BaseChainSetting] = {
@@ -46,10 +51,12 @@ ALL_CHAINS: Dict[str, BaseChainSetting] = {
     SEPOLIA: SepoliaSetting,
     ZHEJIANG: ZhejiangSetting,
     HOLESKY: HoleskySetting,
+    BERACHAIN: BerachainSetting,
 }
 
 
 def get_chain_setting(chain_name: str = MAINNET) -> BaseChainSetting:
+    
     return ALL_CHAINS[chain_name]
 
 
